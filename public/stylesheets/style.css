@@ -1,8 +1,80 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
 }
-
 a {
   color: #00B7FF;
+}
+/* RECIPES EBOOK */
+.logo {
+  width: 100%;
+  max-width: 300px;
+}
+#cover h1 {
+  max-width: 500px;
+  font-size: 60px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+}
+#recipe-ebook .border {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+#recipe-ebook ul {
+  list-style: none;
+  padding-left: 0;
+}
+#recipe-ebook p,
+#recipe-ebook li {
+  font-size: 16px;
+}
+#recipe-ebook .column li {
+  text-align: end;
+}
+#recipe-ebook .page {
+  background-image: url('/images/ebook-background-edited.png');
+  padding: 50px;
+  height: 955px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#recipe-ebook .page .page-bg {
+  background: #fff;
+  padding: 10px 40px;
+  margin: 0 auto;
+}
+#recipe-ebook .page-num {
+  position: relative;
+}
+#recipe-ebook .page-num p {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  font-weight: bold;
+}
+#recipe-ebook .text-center {
+  text-align: center;
+}
+#table-contents .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#table-contents .column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+.social-button {
+  text-decoration: none;
+  background: #3c9cdb;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  margin: 0 10px;
 }
