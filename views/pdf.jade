@@ -1,0 +1,53 @@
+extends layout
+
+block content
+    div(id="recipe-ebook")
+        div(id="cover" class="page")
+            div(class="text-center")
+                img(src="images/cantinero-kentubano-logo.png" class="logo")
+                h1(class="text-center") Recipe Book
+        p(style="page-break-before: always;")
+        div(id="blurb" class="page")
+            div(class="page-bg border")
+                h2(class="text-center") Heading
+        p(style="page-break-before: always;")
+        div(id="table-contents" class="page")
+            div(class="page-bg border")
+                h2(class="text-center") Recipes
+                div(class='row')
+                    div(class='column')
+                        div(class='column-one')
+                            ul
+                                each recipe, index in table
+                                    if index < 25
+                                        li #{recipe}... #{index + offset}
+                    div(class='column')
+                        div(class='column-two')
+                            ul
+                                each recipe, index in table
+                                    if index >= 25
+                                        li #{recipe}... #{index + offset}
+        p(style="page-break-before: always;")
+        each recipe, index in data
+            div(class="page")
+                div(class="page-bg border")
+                    h1(id="#{recipe.anchor}")= recipe.name
+                    img(src="#{recipe.image_url}" class="border")
+                    p(class="text-center")= recipe.summary
+                    h2 Ingredients
+                    ul
+                        each val in recipe.ingredients_flat
+                            li #{val.amount} #{val.unit} #{val.name}
+                    h2 Instructions
+                    ul
+                        each val, index in recipe.instructions_flat
+                            li #{index + 1}. #{val.text}
+            div(class="page-num")
+                p #{index + offset}
+            p(style="page-break-before: always;")
+        div(id="fin" class="page")
+            div(class="border text-center")
+                img(src="" class="logo")
+                a(href="" class="social-button") Instagram
+                a(href="" class="social-button") YouTube
+                a(href="" class="social-button") Pinterest
