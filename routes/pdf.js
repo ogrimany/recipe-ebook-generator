@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch');
 
-router.get('/', async (req, res, next) => {
-
+router.post('/', async (req, res, next) => {
+console.log(req.body);
   // alphabetizes
   function sortedList(list) {
       function compare(a, b) {
@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
       return list.sort(compare);
   }
 
-  fetch('<WP_REST_API_>') // WPRM API URL
+  fetch(req.body.url) // WPRM API URL
       .then(response => response.json())
       .then(data => {
           var recipes = data.map((data) => {
@@ -44,6 +44,7 @@ router.get('/', async (req, res, next) => {
           res.render('pdf', { 
               data: recipes,
               table: contents,
+              title: req.body.title,
               offset: 4
           });
       });
