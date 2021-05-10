@@ -1,0 +1,58 @@
+extends layout
+
+block content
+    div(id='recipe-ebook')
+        div(id='cover', class='page')
+            div(class='text-center')
+                img(src='/images/coctelia-logo.png', class='logo')
+                h1(class='text-center') 10 Cócteles Cubanos
+        p(style='page-break-before: always;')
+        div(id='blurb', class='page')
+            div(class='page-bg border')
+                h2(class='text-center') Antes de empezar...
+                p La mayoría de estas bebidas no contienen más de 3 ingredientes. ¡Y a veces solo se preparan con 2!
+                p Para preparar estos cócteles no necesitarás coctelera ni vaso mezclador. Lo único que a veces necesitarás será una licuadora.
+                p Si no tienes vaso medidor (un jigger) simplemente tener en mente las siguientes medidas:
+                p 1 cucharada = 15 mL&nbsp;&nbsp;|&nbsp;&nbsp;1/4 taza = 60 mL
+                p ¡Espero que disfrutes de estas sabrosas recetas!
+        p(style='page-break-before: always;')
+        div(id='table-contents', class='page')
+            div(class='page-bg border')
+                h2(class='text-center') Recetas
+                div(class='row')
+                    div(class='column')
+                        div(class='column-one')
+                            ul
+                                each recipe, index in table
+                                    if index < 25
+                                        li #{recipe}... #{index + offset}
+                    div(class='column')
+                        div(class='column-two')
+                            ul
+                                each recipe, index in table
+                                    if index >= 25
+                                        li #{recipe}... #{index + offset}
+        p(style='page-break-before: always;')
+        each recipe, index in data
+            div(class='page')
+                div(class='page-bg border')
+                    h1(id='#{recipe.anchor}')= recipe.name
+                    img(src='#{recipe.image_url}', class='border')
+                    p(class='text-center')= recipe.summary
+                    h2 Ingredientes
+                    ul
+                        each val in recipe.ingredients_flat
+                            li #{val.amount} #{val.unit} #{val.name}
+                    h2 Preparación
+                    ul
+                        each val, index in recipe.instructions_flat
+                            li #{index + 1}. #{val.text}
+            div(class='page-num')
+                p #{index + offset}
+            p(style='page-break-before: always;')
+        div(id='fin', class='page')
+            div(class='border text-center')
+                img(src='/images/coctelia-logo.png', class='logo')
+                a(href='https://www.instagram.com/cubancocktailhour/', class='social-button') Instagram
+                a(href='https://www.youtube.com/channel/UCNW23UhjLqB5Au4CqOu0lMw/', class='social-button') YouTube
+                a(href='https://www.pinterest.com/cantinerokentubano/', class='social-button') Pinterest
